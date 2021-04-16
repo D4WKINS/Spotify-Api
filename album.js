@@ -29,6 +29,7 @@ let tracksSection = document.getElementById("colOfSongs")
 let albumSection = document.getElementById("albumSection")
 let volume = document.getElementById("volume")
 let audio = document.getElementById("audio")
+let bottomLeftCorner = document.getElementById("bottomLeftCorner")
 
 
 window.onload = () => {
@@ -60,7 +61,7 @@ const loadAlbum = function (Id) {
 
 const displayTracks = function () {
     albumTracks.forEach(track => {
-        tracksSection.innerHTML += `<div onclick="playAudio('${track.preview}')" class="row tracks-row">  
+        tracksSection.innerHTML += `<div onclick="playAudio('${track.preview}','${track.title_short}','${track.artist.name}')" class="row tracks-row">  
         <div class="song-icon col-1">
           <ion-icon name="musical-note-outline"></ion-icon>
         </div>
@@ -68,7 +69,7 @@ const displayTracks = function () {
           ${track.title_short}
           <div class="song-artists">${track.artist.name}</div>
         </div>
-        <div class="song-length col-1">${convertingDuration(track.duration)}</div>
+        <div class="song-length col-1 ">${convertingDuration(track.duration)}</div>
       </div>`
 
     })
@@ -145,7 +146,22 @@ const volumeChange = function (vol) {
     audio.volume = vol / 100
 }
 
-const playAudio = function (url) {
+const playAudio = function (url, title, artist) {
     audio.src = url
+    bottomLeftCorner.innerHTML = `  <div class="d-flex">
+    <div class="position-relative imageDimensionContainer">
+      <img src="${_album.cover_small}" alt="">
+    </div>
+    <div class="bottomMenuWrapperLeftAlbumText">
+      <h3>${title}</h3>
+      <p>${artist}</p>
+    </div>
+    <div class="bottomMenuWrapperLeftIcons">
+      <ul>
+        <li><i class="far fa-heart"></i></li>
+        <li><i class="fas fa-laptop"></i></li>  
+      </ul>
+    </div>
+  </div>`
 
 }
