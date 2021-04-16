@@ -11,6 +11,8 @@
                   <p class="card-text text-center card-artist">Queen</p>
                 </div>
               </div>
+
+
             </div>  */}
 // "https://striveschool-api.herokuapp.com/api/deezer/artist/412
 // "https://striveschool-api.herokuapp.com/api/deezer/search?q=album/"
@@ -56,4 +58,6 @@ window.onload = () =>{
             // })
             
         }
+
+
 
