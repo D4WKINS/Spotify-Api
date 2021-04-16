@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>Document</title>
+
+  
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <!--CSS-->
+  <link rel="stylesheet" href="stylesheet.css">
+
+</head>
+<body>
+
+
+  <!-- Sidebar -->
+  <div class="wrapperSideBar d-none d-sm-block d-md-block d-lg-block">
+    <nav id="sidebar">
+      <div class="sidebarHeadings">
+        <div class="sidebar-header">
+          <img src="Img/Spotifylogo.png" class="sidebarLogo" alt="Spotify Logo White Trasparent">
+        </div>
+        <ul class="list-unstyled components">
+          <li class="active">
+            <a href="#homeSubmenu" class=""><i class="fas fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-search"></i>Search</a>
+          </li>
+          <li>
+            <a href="#pageSubmenu" class=""><i class="fas fa-bars"></i>Pages</a>
+          </li>
+        </ul>
+      </div> 
+
+      <!-- loggedInMenu -->
+      <div id="loggedInBottomMenu" class="sidebarBottomInfo d-none text-left">
+        <p class="sidebarBottomInfoInstalltheApp"><i class="far fa-arrow-alt-circle-down"></i>Install the app</p>
+        <div class="sidebarUserImageContainer dropup">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="Img/Userimage.jpeg" class="sidebarUserImage" alt="">
+            <span class="sidebarUserText">Diego Banovaz</span>          
+          </button>
+          <div class="dropdown-menu dropdownSettings" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item textDropUp" href="#">Settings</a>
+            <a class="dropdown-item textDropUp" href="#" id="logOutButton">Logout</a>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- loggedOutMenu -->
+      <div id="loggedOutBottomMenu" class="">
+        <div class="sidebarBottomInfo d-flex flex-column">  
+          <!-- Trigger SignUp Modal -->
+          <button type="button" class="btn sidebarBottomInfoSignUp" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
+          <!-- Trigger login Modal -->
+          <button type="button" class="btn sidebarBottomInfoLogin" data-toggle="modal" data-target="#logInModal">Login</button>
+          <div>
+            <ul>
+              <li class="sidebarBottomInfoliFirst">Cookie</li>
+              <li class="sidebarBottomInfoliMiddle">Privacy</li>
+              <li class="sidebarBottomInfoliEnd">Policy</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- End Sidebar -->
+
+  <!-- SignUp Modal -->
+  <div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <img src="Img/Spotify_Logo_RGB_Black.png" class="sidebarLogo">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid px-3">
+            <div class="">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <p class="formSignUpMainP">To continue, sign up for Spotify.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12" >
+                  <a class="btn btn-block signUpWithFacebook"><i class="fab fa-facebook"></i>CONTINUE WITH FACEBOOK</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <a class="btn btn-block text-white signUpWithApple"><i class="fab fa-apple"></i>CONTINUE WITH APPLE</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <hr class="hr-text" data-content="OR">
+                </div>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-12">
+                    <label for="login-username">Email address</label>
+                    <input type="text" class="form-control"  id="signUpEmail" placeholder="Email address or username" required>
+                    <!-- ngIf: accounts.username.$dirty && accounts.username.$invalid -->
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <label for="login-password">Password</label>
+                    <input type="password" class="form-control" id="signUpPassword" placeholder="Password" required>
+                    <!-- ngIf: accounts.password.$dirty && accounts.password.$invalid -->
+                  </div>
+                </div>
+                <div class="row text-center password-reset">
+                </div>
+                <div class="row row-submit mt-3">
+                  <div class="col-12 col-sm-6 d-flex flex-column justify-content-center">
+                  <div>
+                    <label class="checkbox mb-3 mb-md-0"><span>Remember me</span>
+                      <input type="checkbox" id="login-remember" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <button class="btn btn-block spotifyColorButton" id="signUpButton" data-dismiss="modal">SIGN UP</button>
+                  </div>
+                </div>  
+              </form>
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-12">
+                      <hr class="hr-text" data-content="">
+                    </div>
+                  </div>
+                  <div class="row justify-content-center mt-0">
+                    <p class="formSignUpMainP mt-3">Do you already have an account?</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <a id="sign-up-link" class="btn btn-block btn-default spotifySecondaryButton">LOG IN TO SPOTIFY</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="divider">
+                  </div>
+                  <p class="tos text-center disclosureParagraph">If you click "Log in with Facebook" and you are not a Spotify user, you will be registered and you agree to Spotify's <span class="disclosureParagraphGreen">Terms & Conditions</span>  and <span class="disclosureParagraphGreen"> Privacy Policy</span> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Sign Up Modal -->
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="logInModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <img src="Img/Spotify_Logo_RGB_Black.png" class="sidebarLogo">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid px-3">
+            <div class="">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <p class="formSignUpMainP">To continue, login to Spotify.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12" >
+                  <a class="btn btn-block signUpWithFacebook"><i class="fab fa-facebook"></i>CONTINUE WITH FACEBOOK</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <a class="btn btn-block text-white signUpWithApple"><i class="fab fa-apple"></i>CONTINUE WITH APPLE</a>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <hr class="hr-text" data-content="OR">
+                </div>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-12">
+                    <label for="login-username">Email address</label>
+                    <input type="text" class="form-control"  id="loginEmail" placeholder="Email address or username" required>
+                    <!-- ngIf: accounts.username.$dirty && accounts.username.$invalid -->
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col-12">
+                    <label for="login-password">Password</label>
+                    <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                    <!-- ngIf: accounts.password.$dirty && accounts.password.$invalid -->
+                  </div>
+                </div>
+                <div class="row text-center password-reset">
+                </div>
+                <div class="row row-submit mt-3">
+                  <div class="col-12 col-sm-6 d-flex flex-column justify-content-center">
+                  <div>
+                    <label class="checkbox mb-3 mb-md-0"><span>Remember me</span>
+                      <input type="checkbox" id="login-remember" checked="checked">
+                      <span class="checkmark"></span>
+                    </label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <button class="btn btn-block spotifyColorButton" id="loginButton" data-dismiss="modal">LOG IN</button>
+                  </div>
+                  <div class="col-12 text-center text-green mt-3" >
+                    <p><a class="disclosureParagraphGreen" id="reset-password-link">Forgot your password?</a></p>
+                  </div>
+                </div>  
+              </form>
+              <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="col-12">
+                      <hr class="hr-text" data-content="">
+                    </div>
+                  </div>
+                  <div class="row justify-content-center mt-0">
+                    <p class="formSignUpMainP mt-3">Don't have an account?</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <a id="sign-up-link" class="btn btn-block btn-default spotifySecondaryButton">SIGN UP FOR SPOTIFY</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="divider">
+                  </div>
+                  <p class="tos text-center disclosureParagraph">If you click "Log in with Facebook" and you are not a Spotify user, you will be registered and you agree to Spotify's <span class="disclosureParagraphGreen">Terms & Conditions</span>  and <span class="disclosureParagraphGreen"> Privacy Policy</span> </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Login Modal -->
+
+  <!-- Downbar Menu -->
+  <div class="bottomMenuWrapper d-none d-sm-flex d-md-flex d-lg-flex">
+    <div class="bottomMenuWrapperLeft">
+      <div class="d-flex">
+        <img src="Img/Highway 61.PNG" class="bottomMenuWrapperLeftAlbumImage" alt="">
+        <div class="bottomMenuWrapperLeftAlbumText">
+          <h3>Song For My Father</h3>
+          <p>Horace Silver</p>
+        </div>
+        <div class="bottomMenuWrapperLeftIcons">
+          <ul>
+            <li><i class="far fa-heart"></i></li>
+            <li><i class="fas fa-laptop"></i></li>  
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="bottomMenuWrapperCenter">
+      <div>
+        <ul class="d-flex align-items-center justify-content-center">
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-random"></i></li>
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-step-backward"></i></li>
+          <li class="bottomMenuWrapperCenterPlayIcon"><i class="far fa-play-circle"></i></li>
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-step-forward"></i></li>
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-redo"></i></li>
+        </ul>
+      </div>
+      <div class="progress progressSong">
+        <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+    <div class="bottomMenuWrapperRight d-flex align-items-center">
+      <div>
+        <ul>
+          <li><i class="fas fa-bars"></i></li>
+          <li><i class="fas fa-laptop-code"></i></li>
+          <li>
+            <div class="d-flex align-items-center">
+              <i class="fas fa-volume-up"></i>
+              <div class="progress progressVolume mb-0 ml-2">
+                <div class="progress-bar mb-0" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <i class="fas fa-ellipsis-h bottomMenuWrapperRightBars"></i>
+      </div>
+    </div>
+  </div>
+  <!-- End Downbar Menu -->
+
+  <!-- Mobile Top Menu -->
+  <div class="d-flex justify-content-between mobileTopMenu d-block d-sm-none d-md-none d-lg-none d-xl-none">
+    <div class="mobileTopMenuLeft">
+      <i class="fas fa-chevron-left"></i>
+    </div>
+    <div class="mobileTopMenuRight">
+      <ul class="mb-0">
+        <li><i class="far fa-heart"></i></li>
+        <li><i class="fas fa-ellipsis-h"></i></li>
+      </ul>
+    </div>
+  </div>
+  <!-- End Mobile Top Menu -->
+
+  
+  <!-- Mobile Bottom Menu -->
+  <div class="d-flex justify-content-between mobileBottomMenu d-block d-sm-none d-md-none d-lg-none d-xl-none">
+    <div class="BottomMenuSection1 text-center d-flex flex-column align-items-center">
+      <i class="fas fa-home"></i>
+      <p>Home</p>
+    </div>
+    <div class="BottomMenuSection2 text-center d-flex flex-column align-items-center">
+      <i class="fas fa-search"></i>
+      <p>Search</p>
+    </div>
+    <div class="BottomMenuSection3 text-center d-flex flex-column align-items-center">
+      <i class="fas fa-bars"></i>
+      <p>Your Library</p>
+    </div>
+    <div class="BottomMenuSection4 text-center d-flex flex-column align-items-center">
+      <i class="fab fa-spotify"></i>
+      <p>Premium</p>
+    </div>
+  </div>
+  <!-- End Mobile Bottom Menu -->
+
+  <!-- Content Section -->
+  <div class="contentSection">
+    <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit deserunt nesciunt asperiores, unde fugiat enim animi veritatis modi nemo ipsa. Sapiente possimus expedita tenetur harum inventore earum labore facere minus commodi! Ratione excepturi nisi unde repellat aliquam pariatur recusandae, officia et quam dolorem perspiciatis ipsum ut nihil numquam deserunt natus? Maiores harum illo aspernatur vitae expedita culpa dicta, cumque totam nobis doloribus reprehenderit aliquam ullam itaque similique possimus sint numquam eius ex voluptatum! Corrupti cupiditate, ullam porro accusantium dolorum asperiores. Beatae mollitia nemo, id rerum, excepturi ratione harum nostrum neque nobis illum, fuga magni odit at assumenda voluptas cum eveniet adipisci nihil in? Asperiores mollitia veritatis reprehenderit dolore adipisci, harum ad vel, nobis rem recusandae quae! Esse culpa aliquam omnis minima officia eos accusantium. Blanditiis sapiente enim, eaque repudiandae porro, iusto voluptatem placeat aliquid repellendus quos sed quas illum veritatis expedita ipsa. Consequatur ea tenetur minus consectetur, veritatis distinctio ad eos fuga, quos ab, enim voluptatibus ex beatae voluptate blanditiis repellat magnam! Magnam tenetur odio omnis facilis perferendis sequi dicta facere unde quam nisi quia consectetur vero, incidunt consequatur porro alias impedit! Incidunt a at soluta nisi numquam aspernatur dolor culpa quia adipisci aperiam provident quibusdam fuga, rem labore corporis minus eaque laudantium harum qui! Inventore impedit molestiae possimus quod, laudantium unde qui necessitatibus temporibus blanditiis exercitationem accusantium eaque tempore a, excepturi quas quasi veniam distinctio nihil aliquam dignissimos alias expedita? Laudantium voluptatum mollitia suscipit expedita quae aspernatur praesentium eum aperiam facilis, voluptas alias. Fugiat, delectus debitis saepe cum at animi quia. Voluptatem, cum architecto ullam officiis hic amet est aperiam dolore molestiae eligendi optio voluptatibus ratione facilis vel, natus neque quis molestias laborum harum autem! Est, quo amet hic blanditiis vel quaerat deleniti excepturi ut quas inventore fugit exercitationem natus. Ipsam mollitia modi sit iusto a maiores ad culpa reiciendis. Eligendi aspernatur dolorem adipisci illo dignissimos cupiditate, consectetur maiores unde excepturi at temporibus molestias illum enim. Architecto nostrum sapiente nulla at reprehenderit, corporis delectus minima fuga dignissimos officiis dolor corrupti. Minus, ipsam. Cupiditate reprehenderit quos harum laborum? Aperiam alias quod itaque facilis totam cumque maxime asperiores quas harum doloribus esse, error saepe placeat pariatur nesciunt iusto soluta distinctio? Numquam neque eligendi fugiat totam incidunt necessitatibus distinctio, porro officiis dolores provident mollitia, error eos voluptatum quidem ipsum maxime dolor eius. Modi incidunt deleniti suscipit nulla officiis. Eos blanditiis fugit nam, est eveniet ipsa impedit dignissimos, tempora atque deleniti qui unde eius? Molestiae eveniet, odit odio vero blanditiis praesentium accusamus facilis corporis ea enim non incidunt nihil laudantium asperiores mollitia officia dolores cum tempora laboriosam delectus veniam sapiente saepe voluptate? Temporibus ratione porro, quia, deleniti voluptatem nostrum nesciunt sed quas iusto id laudantium illo non optio adipisci tenetur eveniet tempora, dolores ab quae voluptatum voluptate. Fuga, earum fugiat ducimus adipisci temporibus a. Tempore rem, numquam nulla possimus quasi animi esse a, quia ratione mollitia magnam debitis tempora perspiciatis atque necessitatibus placeat est aliquam voluptas? Eligendi, consequuntur dolor suscipit error deleniti repellat molestiae praesentium sit voluptate quod? Consectetur deleniti amet sapiente commodi aut similique aperiam nihil illo blanditiis repudiandae, voluptates ut distinctio enim voluptatem? Eos rerum nostrum facilis, est, accusantium voluptatibus dicta praesentium fuga deserunt quisquam exercitationem commodi, iure iste sed maxime fugit tempore. Maxime voluptas obcaecati harum, magni architecto nulla, dignissimos aliquid reprehenderit nisi voluptates voluptatem dolorum tempore temporibus in autem a! Velit, quae iure doloremque perspiciatis vero libero excepturi consequuntur minus id veniam, nam beatae illum. Delectus voluptate laudantium sed amet recusandae illum blanditiis aspernatur debitis at ut accusamus laboriosam rem eius ullam, repellat quaerat officia ducimus autem assumenda saepe quod eos numquam incidunt? Fugiat culpa, fugit qui cumque exercitationem illum temporibus quo unde similique. Veritatis porro ipsum ducimus nisi tenetur accusamus doloribus quas nulla amet at, obcaecati molestias asperiores totam. Aut illo, praesentium eligendi veritatis quas officia, id quos blanditiis earum deleniti eum ipsum tempora dolore dicta minus neque ratione nulla porro, dignissimos rem nihil cumque itaque? Provident numquam voluptatum nostrum cum dolore tenetur deserunt error. Ipsum nam quisquam eum quasi fuga, velit molestiae eveniet nesciunt adipisci repudiandae recusandae! Inventore magni quos repudiandae eos quia nam laboriosam exercitationem? Libero sequi quisquam illum in eveniet, repellendus voluptas blanditiis soluta ut molestiae ea possimus fugit perferendis non architecto laborum voluptate, provident ducimus cumque, eum dignissimos quidem. Eligendi nihil eius suscipit! Ipsa deserunt quae repellendus eos, autem ut suscipit, enim maxime corrupti ipsum repellat, libero quidem ea alias consequatur? Tempora est totam ducimus incidunt dolorum doloribus praesentium porro sapiente voluptas! Obcaecati in nulla rem quae impedit exercitationem eaque error voluptatibus perferendis debitis? Explicabo quibusdam iusto facilis. Incidunt quibusdam reiciendis optio delectus commodi atque! Delectus sapiente est illo quo consequatur! Saepe assumenda iure debitis, molestias excepturi a, delectus quae quia quos harum deleniti doloremque provident quibusdam, commodi minus quo magni consequuntur repellat distinctio! Quisquam vero doloremque in dolorum consequuntur labore modi ut nemo eum ex velit laborum, dolores quia sapiente ad quidem ratione. Quibusdam nemo porro hic repellendus, numquam suscipit sapiente libero iste maxime optio unde recusandae eius esse saepe velit quam sit molestiae quia alias praesentium veritatis repellat accusamus quaerat maiores? Voluptas, inventore dolor? Hic incidunt mollitia voluptatibus ex facilis! Expedita laudantium magni modi eum, quidem dolore inventore obcaecati earum quisquam rerum blanditiis esse eius, et amet labore, reprehenderit nulla veritatis minus eveniet dolorem fugit praesentium enim aliquam aspernatur? Aperiam magnam est aut eveniet quod cum, facere omnis quidem amet? Expedita perspiciatis at dolore corporis asperiores, tempore est tempora quia, iure voluptatum optio animi alias. Debitis expedita exercitationem repellat sapiente! Temporibus aperiam itaque, aut iusto labore aliquam molestiae illum alias veritatis aliquid, dolore impedit commodi? Ad, repellendus! Officia dicta, consequatur sint sed et soluta placeat veniam incidunt accusantium nemo commodi porro tenetur minus eius accusamus sunt cumque, cupiditate non modi quae. Adipisci cum ad nihil tenetur eos. Unde quia enim magnam corrupti id aperiam cum dolor, vel placeat corporis voluptatum doloremque blanditiis officia rem ea alias. Eius cumque illum eum quis ipsam, quaerat corporis rem fugit quos cupiditate? Ab voluptate, amet beatae, quasi accusantium sunt aliquam vero nemo atque placeat ad odio.</p>
+  </div>
+  <!-- End Content Section -->
+
+    <!--Local Storage-->
+    <script>
+      const signUpEmail = document.getElementById('signUpEmail')
+      const signUpPassword = document.getElementById('signUpPassword')
+      const signUpButton = document.getElementById('signUpButton')
+      const loginEmail = document.getElementById('loginEmail')
+      const loginPassword = document.getElementById('loginPassword')
+      const loginButton = document.getElementById('loginButton')
+      const logOutButton = document.getElementById('logOutButton')
+
+      const loggedInBottomMenu = document.getElementById('loggedInBottomMenu')
+      const loggedOutBottomMenu = document.getElementById('loggedOutBottomMenu')
+
+      
+      window.onload = function () {
+        let loggedIn = localStorage.getItem("LOGGED_IN");
+        displaySidebarFooter();
+      }
+
+      function logInUser() {
+        localStorage.setItem("LOGGED_IN", true);
+        displaySidebarFooter();
+      }
+
+      function logOutUser() {
+        localStorage.clear();
+        location.reload();
+      }
+
+      function displaySidebarFooter() {
+        let loggedIn = localStorage.getItem("LOGGED_IN");
+        if (loggedIn){
+          loggedInBottomMenu.classList.remove('d-none');
+          loggedOutBottomMenu.classList.add('d-none');
+        } else {
+          loggedOutBottomMenu.classList.remove('d-none');
+          loggedInBottomMenu.classList.add('d-none');
+        }
+      }
+
+      signUpButton.onclick = logInUser
+      logOutButton.onclick = logOutUser
+
+    </script>
+    <!--End Local Storage-->
+
+    <!--Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+  
+    <!--Fontawesome-->
+    <script src="https://kit.fontawesome.com/cf8ccbb757.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
