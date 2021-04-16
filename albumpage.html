@@ -70,6 +70,10 @@
       .song-artists {
         color: gray;
       }
+      .tracks-row:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+      }
     </style>
   </head>
   <body>
@@ -490,48 +494,12 @@
     </div>
     <!-- End Login Modal -->
 
-    <!-- Downbar Menu -->
-    <div class="bottomMenuWrapper d-none d-sm-flex d-md-flex d-lg-flex">
-      <div class="bottomMenuWrapperLeft">
-        <div class="d-flex">
-          <div class="position-relative imageDimensionContainer">
-            <img
-              src="Img/Highway 61.PNG"
-              class="bottomMenuWrapperLeftAlbumImage"
-              alt=""
-            />
-          </div>
-          <div class="bottomMenuWrapperLeftAlbumText">
-            <h3>Song For My Father</h3>
-            <p>Horace Silver</p>
-          </div>
-          <div class="bottomMenuWrapperLeftIcons">
-            <ul>
-              <li><i class="far fa-heart"></i></li>
-              <li><i class="fas fa-laptop"></i></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="bottomMenuWrapperCenter">
-        <div>
-          <ul class="d-flex align-items-center justify-content-center">
-            <li class="bottomMenuWrapperCenterSecondaryIcon">
-              <i class="fas fa-random"></i>
-            </li>
-            <li class="bottomMenuWrapperCenterSecondaryIcon">
-              <i class="fas fa-step-backward"></i>
-            </li>
-            <li class="bottomMenuWrapperCenterPlayIcon">
-              <i class="far fa-play-circle"></i>
-            </li>
-            <li class="bottomMenuWrapperCenterSecondaryIcon">
-              <i class="fas fa-step-forward"></i>
-            </li>
-            <li class="bottomMenuWrapperCenterSecondaryIcon">
-              <i class="fas fa-redo"></i>
-            </li>
-          </ul>
+  <!-- Downbar Menu -->
+  <div class="bottomMenuWrapper d-none d-sm-flex d-md-flex d-lg-flex">
+    <div id="bottomLeftCorner" class="bottomMenuWrapperLeft">
+      <!-- <div class="d-flex">
+        <div class="position-relative imageDimensionContainer">
+          <img src="Img/Highway 61.PNG" class="bottomMenuWrapperLeftAlbumImage" alt="">
         </div>
         <div class="progress progressSong">
           <div
@@ -561,9 +529,32 @@
           </ul>
           <i class="fas fa-ellipsis-h bottomMenuWrapperRightBars"></i>
         </div>
+      </div> -->
+    </div>
+    <div class="bottomMenuWrapperCenter">
+      <div>
+        <ul class="d-flex align-items-center justify-content-center">
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-random"></i></li>
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-step-backward"></i></li>
+          <li class="bottomMenuWrapperCenterPlayIcon"><i class="far fa-play-circle"></i></li>
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-step-forward"></i></li>
+          <li class="bottomMenuWrapperCenterSecondaryIcon"><i class="fas fa-redo"></i></li>
+        </ul>
+      </div>
+      <div class="progress progressSong">
+        <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
       </div>
     </div>
-    <!-- End Downbar Menu -->
+    <div class="bottomMenuWrapperRight d-flex align-items-center">
+      <div>
+        <ul>
+          <li><i class="fas fa-bars"></i></li>
+          <li><i class="fas fa-laptop-code"></i></li>
+          <li class="finalListLi">
+            <div class="d-flex align-items-center">
+              <i class="fas fa-volume-up"></i>
+              <!--THIS INPUT THE CONTAINS VOLUME SLIDER-->
+               <input  id="volume" type="range" oninput="volumeChange(this.value)" class="d-lg-block styled-slider slider-progress p-3"/>  <!--  SLIDE BAR CHANGES VOLUME ONINPUT -->
 
     <!-- Mobile Top Menu -->
     <div
@@ -612,17 +603,88 @@
     </div>
     <!-- End Mobile Bottom Menu -->
 
-    <!-- Content Section -->
-    <div class="contentSection">
-      <div class="container-fluid" id="Album-Page">
-        <div class="row">
-          <div class="col-sm-12 col-md-6 Album text-center">
-            <div class="Album-Image mt-5 mt-sm-4 mt-md-0">
-              <img
-                class="img-fluid"
-                src="https://i.scdn.co/image/ab67616d00001e02d92f69c3b3adb389afdde64f"
-                alt="Queen II (Deluxe Edition 2011 Remaster)"
-              />
+  <!-- Content Section -->
+  <div class="contentSection">
+    <audio id="audio"  src=""  class="d-none" autoplay> </audio> <!---------------------------EMPTY AUDIO  -------------->
+    <div class="container-fluid" id="Album-Page">
+       <div  class="row">   
+        <div id="albumSection" class="col-sm-12 col-md-6 Album text-center">     <!--   HERE BEGINS THE ALBUM SECTION , IT ENDS IN LINE 490   -->
+          <!-- <div class="Album-Image mt-5 mt-sm-4 mt-md-0">
+            <img
+              class="img-fluid"
+              src="https://i.scdn.co/image/ab67616d00001e02d92f69c3b3adb389afdde64f"
+              alt="Queen II (Deluxe Edition 2011 Remaster)"
+            />
+          </div>
+          <div class="Album-Title text-white text-center mt-2">
+            Queen II (Deluxe Edition 2011 Remaster)
+          </div>
+          <div class="Artists text-center">Queen</div>
+          <div class="play-btn-place text-center">
+            <button type="button" class="btn btn-play">PLAY</button>
+          </div>
+          <div class="Album-Year-Num-Songs mt-3">
+            <span class="Album-Year">1974</span>
+            <span class="dot">•</span>
+            <span class="Album-Num-Songs">16 SONGS</span>
+          </div>
+          <div class="Icons text-white mb-4">
+            <span class="Save-to-Your-Library-Icon text-white text-center">
+              <button
+                type="button"
+                role="switch"
+                aria-checked="false"
+                aria-label="Save to Your Library"
+                class="btn"
+                title="Save to Your Library"
+              >
+                <svg
+                  role="img"
+                  height="32"
+                  width="32"
+                  viewBox="0 0 32 32"
+                  class=""
+                >
+                  <path
+                    d="M27.672 5.573a7.904 7.904 0 00-10.697-.489c-.004.003-.425.35-.975.35-.564 0-.965-.341-.979-.354a7.904 7.904 0 00-10.693.493A7.896 7.896 0 002 11.192c0 2.123.827 4.118 2.301 5.59l9.266 10.848a3.196 3.196 0 004.866 0l9.239-10.819A7.892 7.892 0 0030 11.192a7.896 7.896 0 00-2.328-5.619zm-.734 10.56l-9.266 10.848c-.837.979-2.508.979-3.346 0L5.035 16.104A6.9 6.9 0 013 11.192 6.9 6.9 0 015.035 6.28a6.935 6.935 0 014.913-2.048 6.89 6.89 0 014.419 1.605A2.58 2.58 0 0016 6.434c.914 0 1.555-.53 1.619-.585a6.908 6.908 0 019.346.431C28.277 7.593 29 9.337 29 11.192s-.723 3.6-2.062 4.941z"
+                  ></path>
+                </svg>
+              </button>
+            </span>
+            <span class="Three-Dot-Icon text-white text-center">
+              <button
+                type="button"
+                aria-haspopup="menu"
+                aria-label="More"
+                class="btn"
+                title="More"
+              >
+                <svg
+                  role="img"
+                  height="32"
+                  width="32"
+                  viewBox="0 0 32 32"
+                  class=""
+                >
+                  <path
+                    d="M5.998 13.999A2 2 0 105.999 18 2 2 0 005.998 14zm10.001 0A2 2 0 1016 18 2 2 0 0016 14zm10.001 0A2 2 0 1026.001 18 2 2 0 0026 14z"
+                  ></path>
+                </svg>
+              </button>
+            </span>
+          </div>-->
+        </div> 
+        <div class="col-sm-12 col-md-6">
+          <div id="colOfSongs" class="song col-12 text-white">
+            <!-- <div class="row">                          ---------------------------------- LINE 493 TO 502 IS A  SONG (493-644 WERE THE PREVIOUS SONGS )---------------------------------->
+            <!--  <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Procession - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">1:13</div>
             </div>
             <div class="Album-Title text-white text-center mt-2">
               Queen II (Deluxe Edition 2011 Remaster)
@@ -826,7 +888,8 @@
                 </div>
                 <div class="song-length col-1">3:00</div>
               </div>
-            </div>
+              <div class="song-length col-1">3:00</div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -892,6 +955,11 @@
           )
         );
       }
+      
+    </script>
+    <!-- Kosta's script link -->
+    <script src="album.js">
+
     </script>
     <!--End Local Storage-->
 
