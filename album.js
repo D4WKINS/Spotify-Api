@@ -27,6 +27,8 @@ let _album = {}
 let albumTracks = []
 let tracksSection = document.getElementById("colOfSongs")
 let albumSection = document.getElementById("albumSection")
+let volume = document.getElementById("volume")
+let audio = document.getElementById("audio")
 
 
 window.onload = () => {
@@ -58,7 +60,7 @@ const loadAlbum = function (Id) {
 
 const displayTracks = function () {
     albumTracks.forEach(track => {
-        tracksSection.innerHTML += `<div class="row">  
+        tracksSection.innerHTML += `<div onclick="playAudio('${track.preview}')" class="row tracks-row">  
         <div class="song-icon col-1">
           <ion-icon name="musical-note-outline"></ion-icon>
         </div>
@@ -138,4 +140,12 @@ const displayAlbum = function () {
  </span>
 </div>
 </div>`
+}
+const volumeChange = function (vol) {
+    audio.volume = vol / 100
+}
+
+const playAudio = function (url) {
+    audio.src = url
+
 }

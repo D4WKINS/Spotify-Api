@@ -66,6 +66,10 @@
       .song-artists {
         color: gray;
       }
+      .tracks-row:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+      }
     </style>
   </head>
   <body>
@@ -371,7 +375,7 @@
             <div class="d-flex align-items-center">
               <i class="fas fa-volume-up"></i>
               <!--THIS INPUT THE CONTAINS VOLUME SLIDER-->
-              <input type="range" class="d-lg-block styled-slider slider-progress p-3"/>
+               <input  id="volume" type="range" oninput="volumeChange(this.value)" class="d-lg-block styled-slider slider-progress p-3"/>  <!--  SLIDE BAR CHANGES VOLUME ONINPUT -->
 
             </div>
           </li>
@@ -420,6 +424,7 @@
 
   <!-- Content Section -->
   <div class="contentSection">
+    <audio id="audio"  src=""  class="d-none" autoplay> </audio> <!---------------------------EMPTY AUDIO  -------------->
     <div class="container-fluid" id="Album-Page">
        <div  class="row">   
         <div id="albumSection" class="col-sm-12 col-md-6 Album text-center">     <!--   HERE BEGINS THE ALBUM SECTION , IT ENDS IN LINE 490   -->
