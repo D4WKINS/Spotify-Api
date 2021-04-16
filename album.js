@@ -1,24 +1,24 @@
 //  PREVIOUS SCRIPT FROM HERE
-// let parentDivs = document.querySelectorAll('body > div > div > div > div.col-12.col-md-8 > div')
-// // console.log(parentDivs[0].firstElementChild.innerHTML)
+let parentDivs = document.querySelectorAll('body > div > div > div > div.col-12.col-md-8 > div')
+// console.log(parentDivs[0].firstElementChild.innerHTML)
 
-// const changeToPlay = (e) => {
-//     let parent = e.currentTarget 
-//     let iconDiv = parent.firstElementChild
-//     iconDiv.innerHTML = '<i class="far fa-play-circle icon-grey-md"></i>'
-// }
-// const changeToNote = (e) => {
-//     let parent = e.currentTarget 
-//     let iconDiv = parent.firstElementChild
-//     iconDiv.innerHTML = '<i class="fas fa-music smallest-grey-text"></i>'
-// }
+const changeToPlay = (e) => {
+    let parent = e.currentTarget
+    let iconDiv = parent.firstElementChild
+    iconDiv.innerHTML = '<i class="far fa-play-circle icon-grey-md"></i>'
+}
+const changeToNote = (e) => {
+    let parent = e.currentTarget
+    let iconDiv = parent.firstElementChild
+    iconDiv.innerHTML = '<i class="fas fa-music smallest-grey-text"></i>'
+}
 
-// parentDivs.forEach (
-//     x => {
-//         x.onmouseover = changeToPlay
-//         x.onmouseout = changeToNote
-//     }
-// )
+parentDivs.forEach(
+    x => {
+        x.onmouseover = changeToPlay
+        x.onmouseout = changeToNote
+    }
+)
 //  PREVIOUS SCRIPT ENDS HERE
 
 // NEW SCRIPT STARTS HERE
@@ -39,7 +39,7 @@ window.onload = () => {
 function pad(d) {
     return (d < 10) ? '0' + d.toString() : d.toString();
 }
-// converts the duration (500 seconds for example) to a more readable form "mins" : "sec"
+// converts the duration (500 seconds for example is 4 mins and 20 seconds) to a more readable form "mins" : "sec"
 const convertingDuration = function (dur) {
     let sec = dur % 60
     let mins = (dur - sec) / 60
