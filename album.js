@@ -24,16 +24,46 @@
 // NEW SCRIPT STARTS HERE
 let albumId = 75621062
 let albumTracks = []
+let tracksSection = document.getElementById("colOfSongs")
 
 window.onload = () => {
-    fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${albumId}`)
+    loadAlbum(albumId)
+}
+// makes every number under 2 digits to appear wth zero at the begining
+function pad(d) {
+    return (d < 10) ? '0' + d.toString() : d.toString();
+}
+// converts the duration (500 seconds for example) to a more readable form "mins" : "sec"
+const convertingDuration = function (dur) {
+    let sec = dur % 60
+    let mins = (dur - sec) / 60
+    return `${mins}:${pad(sec)}`
+}
+const loadAlbum = function (Id) {
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${Id}`)
         .then(res => res.json())
         .then(album => {
-            console.log(album)
+            // console.log(album)
             albumTracks = album.tracks.data
             console.log("This is the array of tracks", albumTracks)
-
-
+            displayAlbum()
         })
         .catch(err => console.log(err))
+}
+
+const displayAlbum = function () {
+    albumTracks.forEach(track => {
+        tracksSection.innerHTML += `<div class="row">
+        <div class="song-icon col-1">
+          <ion-icon name="musical-note-outline"></ion-icon>
+        </div>
+        <div class="song-title col-10">
+          ${track.title_short}
+          <div class="song-artists">${track.artist.name}</div>
+        </div>
+        <div class="song-length col-1">${convertingDuration(track.duration)}</div>
+      </div>`
+    })
+
+
 }
