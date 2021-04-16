@@ -14,10 +14,14 @@
 
 
             </div>  */}
+// "https://striveschool-api.herokuapp.com/api/deezer/artist/412
+// "https://striveschool-api.herokuapp.com/api/deezer/search?q=album/"
 
-let artistId = "lil wayne"
+let artistId = 'queen'
+
 window.onload = () =>{
-            fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=album/" + artistId )
+    
+            fetch("https://striveschool-api.herokuapp.com/api/deezer/search?q=album/"+ artistId )
             .then(artistAlbums => artistAlbums.json())
             .then(artistAlbums2 =>{
 
@@ -43,18 +47,15 @@ window.onload = () =>{
                     });
                return artistAlbums2
             })
-            .then(artistAlbums3 =>{
-                //Change Header Background img and text
-                    let albums = document.getElementById('albums').children
-                    console.log(albums)
-                    for(let i =0; i <albums.length; i++){
-                        albums[i].addEventListener("click", ()=>{
-
-                    
-                        })
-                    }
-                
-            })
+            // .then(artistAlbums3 =>{
+            //     //Change Header Background img and text
+            //         let albums = document.getElementById('albums').children
+            //         console.log(albums)
+            //         for(let i =0; i <albums.length; i++){
+            //             albums[i].addEventListener("click", ()=>{
+            //             })
+            //         }
+            // })
             
         }
 
