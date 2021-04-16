@@ -3,26 +3,30 @@ let parentDivs = document.querySelectorAll('body > div > div > div > div.col-12.
 // console.log(parentDivs[0].firstElementChild.innerHTML)
 
 const changeToPlay = (e) => {
-    let parent = e.currentTarget
-    let iconDiv = parent.firstElementChild
-    iconDiv.innerHTML = '<i class="far fa-play-circle icon-grey-md"></i>'
+  let parent = e.currentTarget
+  let iconDiv = parent.firstElementChild
+  iconDiv.innerHTML = '<i class="far fa-play-circle icon-grey-md"></i>'
 }
 const changeToNote = (e) => {
-    let parent = e.currentTarget
-    let iconDiv = parent.firstElementChild
-    iconDiv.innerHTML = '<i class="fas fa-music smallest-grey-text"></i>'
+  let parent = e.currentTarget
+  let iconDiv = parent.firstElementChild
+  iconDiv.innerHTML = '<i class="fas fa-music smallest-grey-text"></i>'
 }
 
 parentDivs.forEach(
-    x => {
-        x.onmouseover = changeToPlay
-        x.onmouseout = changeToNote
-    }
+  x => {
+    x.onmouseover = changeToPlay
+    x.onmouseout = changeToNote
+  }
 )
 //  PREVIOUS SCRIPT ENDS HERE
 
 // NEW SCRIPT STARTS HERE
-let albumId = 75621062
+let SearchParams = new URLSearchParams(location.search);
+
+let id = SearchParams.get("id")
+
+let albumId = id
 let _album = {}
 let albumTracks = []
 let tracksSection = document.getElementById("colOfSongs")
@@ -33,35 +37,35 @@ let bottomLeftCorner = document.getElementById("bottomLeftCorner")
 
 
 window.onload = () => {
-    loadAlbum(albumId)
+  loadAlbum(albumId)
 }
 // makes every number under 2 digits to appear wth zero at the begining
 function pad(d) {
-    return (d < 10) ? '0' + d.toString() : d.toString();
+  return (d < 10) ? '0' + d.toString() : d.toString();
 }
 // converts the duration (500 seconds for example is 4 mins and 20 seconds) to a more readable form "mins" : "sec"
 const convertingDuration = function (dur) {
-    let sec = dur % 60
-    let mins = (dur - sec) / 60
-    return `${mins}:${pad(sec)}`
+  let sec = dur % 60
+  let mins = (dur - sec) / 60
+  return `${mins}:${pad(sec)}`
 }
 const loadAlbum = function (Id) {
-    fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${Id}`)
-        .then(res => res.json())
-        .then(album => {
-            _album = album
-            console.log(_album)
-            albumTracks = album.tracks.data
-            console.log("This is the array of tracks", albumTracks)
-            displayTracks()
-            displayAlbum()
-        })
-        .catch(err => console.log(err))
+  fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${Id}`)
+    .then(res => res.json())
+    .then(album => {
+      _album = album
+      console.log(_album)
+      albumTracks = album.tracks.data
+      console.log("This is the array of tracks", albumTracks)
+      displayTracks()
+      displayAlbum()
+    })
+    .catch(err => console.log(err))
 }
 
 const displayTracks = function () {
-    albumTracks.forEach(track => {
-        tracksSection.innerHTML += `<div onclick="playAudio('${track.preview}','${track.title_short}','${track.artist.name}')" class="row tracks-row">  
+  albumTracks.forEach(track => {
+    tracksSection.innerHTML += `<div onclick="playAudio('${track.preview}','${track.title_short}','${track.artist.name}')" class="row tracks-row">  
         <div class="song-icon col-1">
           <ion-icon name="musical-note-outline"></ion-icon>
         </div>
@@ -72,11 +76,11 @@ const displayTracks = function () {
         <div class="song-length col-1 ">${convertingDuration(track.duration)}</div>
       </div>`
 
-    })
+  })
 }
 
 const displayAlbum = function () {
-    albumSection.innerHTML = ` <div class="Album-Image mt-5 mt-sm-4 mt-md-0">
+  albumSection.innerHTML = ` <div class="Album-Image mt-5 mt-sm-4 mt-md-0">
  <img
    class="img-fluid"
    src="${_album.cover_medium}"
@@ -143,12 +147,12 @@ const displayAlbum = function () {
 </div>`
 }
 const volumeChange = function (vol) {
-    audio.volume = vol / 100
+  audio.volume = vol / 100
 }
 
 const playAudio = function (url, title, artist) {
-    audio.src = url
-    bottomLeftCorner.innerHTML = `  <div class="d-flex">
+  audio.src = url
+  bottomLeftCorner.innerHTML = `  <div class="d-flex">
     <div class="position-relative imageDimensionContainer">
       <img src="${_album.cover_small}" alt="">
     </div>
