@@ -39,6 +39,7 @@ const searchAlbum = (obj, query) => {
     let uniqIds = [...new Set(idsArr)]
     let uniqueAlbums = uniqIds.map( unId => searchedAlbums.find( a => a.id === unId))
     console.log(uniqueAlbums)
+    console.log(uniqueAlbums)
     return uniqueAlbums
 }
 

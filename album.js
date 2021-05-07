@@ -22,7 +22,7 @@ parentDivs.forEach(
 //  PREVIOUS SCRIPT ENDS HERE
 
 // NEW SCRIPT STARTS HERE
-let albumId = 75621062
+let albumId = 1262014
 let _album = {}
 let albumTracks = []
 let tracksSection = document.getElementById("colOfSongs")
@@ -30,7 +30,6 @@ let albumSection = document.getElementById("albumSection")
 let volume = document.getElementById("volume")
 let audio = document.getElementById("audio")
 let bottomLeftCorner = document.getElementById("bottomLeftCorner")
-
 
 window.onload = () => {
     loadAlbum(albumId)
