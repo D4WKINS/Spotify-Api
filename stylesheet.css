@@ -363,6 +363,12 @@
   box-sizing: border-box;
 }
 
+.searcher {
+  border-radius: 18px;
+  max-width: 160px;
+  color: black;
+} 
+
 .sidebarBottomInfoSignUp{
   padding: 5px 30px;
   background-color: #FFFFFF;

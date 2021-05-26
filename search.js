@@ -46,6 +46,7 @@ const searchAlbum = (obj, query) => {
 const generatePage = (obj, query) => {
     let albums = searchAlbum(obj, query)
     let artists = searchArtist(obj, query)
+    
     const page = document.querySelector('#Album-Page')
     page.innerHTML = ''
     if (artists.length > 0) {
@@ -58,15 +59,18 @@ const generatePage = (obj, query) => {
         row.appendChild(title)
         artists.forEach(
             art => {
+                console.log(art.name)
                 let contDiv = document.createElement('div')
                 contDiv.classList.add('p-3')
                 contDiv.innerHTML = `
+                <a href="artist.html?q=${art.id}">
                 <div class="card col-12 p-0 custom-card">
-                  <img class="card-img- img-fluid" src=${art.picture_medium} alt="Card image cap">
+                  <img class="card-img img-fluid w-100" src=${art.picture_medium} alt="Card image cap">
                   <div class="card-body">
-                    <p class="card-text text-black">${art.name}</p>
+                    <p class="card-text">${art.name}</p>
                   </div>
-                </div>`
+                </div></a>
+                `
                 row.appendChild(contDiv)
             }
         )
@@ -84,12 +88,14 @@ const generatePage = (obj, query) => {
                 let contDiv = document.createElement('div')
                 contDiv.classList.add('p-3')
                 contDiv.innerHTML = `
+                <a href="album.html?q=${album.id}">
                 <div class="card col-12 p-0 custom-card">
                   <img class="card-img- img-fluid" src=${album.cover_medium} alt="Card image cap">
                   <div class="card-body">
                     <p class="card-text text-black">${album.title}</p>
                   </div>
-                </div>`
+                </div></a>`
+
                 row.appendChild(contDiv)
             }
         )

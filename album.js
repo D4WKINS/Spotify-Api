@@ -30,10 +30,14 @@ let albumSection = document.getElementById("albumSection")
 let volume = document.getElementById("volume")
 let audio = document.getElementById("audio")
 let bottomLeftCorner = document.getElementById("bottomLeftCorner")
-
-window.onload = () => {
-    loadAlbum(albumId)
+const getURLQuery = () =>{
+  let query = window.location.search
+  return query = query.slice(3,query.length)
 }
+window.onload = () => {
+    loadAlbum(getURLQuery())
+}
+
 // makes every number under 2 digits to appear wth zero at the begining
 function pad(d) {
     return (d < 10) ? '0' + d.toString() : d.toString();

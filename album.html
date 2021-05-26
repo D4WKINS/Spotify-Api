@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
     />
-    <title>Artist Page</title>
+    <title>Album Page</title>
 
     <!--Favicon-->
     <link
@@ -22,6 +22,7 @@
       href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
     <!--Bootstrap-->
     <link
       rel="stylesheet"
@@ -31,173 +32,47 @@
     />
     <!--CSS-->
     <link rel="stylesheet" href="stylesheet.css" />
-
     <style>
-      @font-face {
-        font-family: lineto-circular-black;
-        src: url(assets/fonts/lineto-circular-black.ttf);
-      }
-      @font-face {
-        font-family: lineto-circular-pro-book;
-        src: url(assets/fonts/lineto-circular-pro-book.ttf);
-      }
-      .album,
-      .contentSection {
-        background-color: #121212 !important;
-      }
-
-      .container-img-artist {
-        position: relative;
-        width: calc(100vw - 200px);
-        height: 40vh;
-        margin: 0;
-        position: relative;
-      }
-
-      .container-img-artist::after {
-        content: "";
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        height: 40vh;
-        width: calc(100vw - 200px);
-        background: linear-gradient(
-          0deg,
-          rgb(18, 18, 18, 1) 0%,
-          rgb(18, 18, 18, 0.9) 5%,
-          rgba(18, 18, 18, 0.97) 10%,
-          rgba(18, 18, 18, 0) 100%
-        );
-        z-index: 1;
-      }
-      .img-artist {
-        position: absolute;
-        width: calc(100vw - 200px);
-        height: 40vh;
-        z-index: 1;
-      }
-
-      .text-artist-listener {
-        font-size: 10px;
-        position: absolute;
-        left: 50%;
-        top: 25%;
-        transform: translate(-50%, -50%);
-        font-family: lineto-circular-pro-book;
-        z-index: 2;
-      }
-      .text-artist-title {
-        background-color: transparent;
-        position: absolute;
-        left: 50%;
-        top: 40%;
-        transform: translate(-50%, -50%);
-        font-weight: 900;
-        font-family: lineto-circular-pro-book;
-        z-index: 2;
-      }
-      .btn-place {
-        display: flex;
-        justify-content: center;
-        position: absolute;
-        z-index: 2;
-        left: 50%;
-        top: 65%;
-        transform: translate(-50%, -50%);
-      }
-      .btnArtistPage {
-        font-size: 8px;
-        padding: 0% 40%;
-        margin: 0% 5%;
-        color: white;
-        border: 1px solid black;
-        border-radius: 20px;
-        font-weight: normal;
-      }
-      .btn-play {
-        background-color: #1db954;
-      }
-      .btn-play:hover {
-        color: black;
-        background-color: white;
-      }
-      .btn-follow {
-        border: 1px solid white;
-        background-color: rgb(18, 18, 18, 0.5);
-      }
-      .btn-follow:hover {
-        color: rgb(18, 18, 18, 0.5);
-        background-color: white;
-      }
-      .dots {
-        background-color: transparent;
-        border: 0;
+      body {
         padding: 0;
-        fill: white;
-        transform: scale(0.65);
+        margin: 0;
       }
-      .dots:hover {
-        color: black;
-        background-color: white;
-      }
-      .Page-navigation {
-        position: relative;
-        top: -30px;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 4;
-        background-color: rgb(18, 18, 18);
-      }
-
-      .page-link {
-        border: none;
-        color: white;
-        background-color: transparent;
-        font-size: 8px;
-      }
-      .page-item .page-link {
-        color: gray;
-        background-color: transparent;
-      }
-      .page-item.active .page-link {
-        color: white;
-        background-color: transparent;
-      }
-      .page-item.active .link-borderBottom {
-        border-bottom: 2px solid green;
-        position: absolute;
-        right: 35%;
-        bottom: 3px;
-        left: 35%;
-      }
-      .card,
-      .card-body {
-        color: white;
-        border: none;
-        background: transparent !important;
-        font-weight: bold;
-      }
-      .albums-heading {
+      #Album-Page {
+        min-height: 100vh;
         background-color: #121212;
-        margin: 0;
+        padding: 30px 20px;
+      }
+      * {
+        font-family: "Gothic A1", sans-serif;
+      }
+      .dot {
+        font-family: sans-serif;
+      }
+      .Album-Title {
+        font-family: "Gothic A1";
+        font-weight: 700;
+        font-size: large;
+      }
+      .btn-play,
+      .btn-primary {
+        padding: 10px 60px;
+        background-color: #1db954;
         color: white;
-        font-weight: bold;
-
+        border-radius: 20px;
+        font-weight: 600;
       }
-      .card-text{
-        font-family: lineto-circular-pro-book;
-        font-size:10px ;
-        margin: 0;
-        padding: 0;
+      .Icons {
+        background: transparent;
+        fill: white;
       }
-      .card-artist {
-        margin-top: 5%;
-        padding-top:0 ;
+      .Artists,
+      .Album-Year-Num-Songs,
+      .song-artists {
         color: gray;
-        font-size:12px ;
-        font-family: lineto-circular-pro-book;
-        font-weight: normal;
+      }
+      .tracks-row:hover {
+        cursor: pointer;
+        transform: scale(1.05);
       }
     </style>
   </head>
@@ -215,24 +90,33 @@
           </div>
           <ul class="list-unstyled components">
             <li class="active">
-              <a href="index.html" class=""
-                ><i class="fas fa-home"></i>Home</a
-              >
+              <a href="index.html" class=""><i class="fas fa-home"></i>Home</a>
             </li>
             <li>
               <a href="#"><i class="fas fa-search"></i>Search</a>
             </li>
             <li>
-              <a class="" data-toggle="collapse" href="#collapsePages" role="button" aria-expanded="false" aria-controls="collapseExample">
+              <a
+                class=""
+                data-toggle="collapse"
+                href="#collapsePages"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
                 <i class="fas fa-bars"></i>Pages
               </a>
             </li>
             <div class="collapse" id="collapsePages">
               <li>
-                <a href="artistpage.html"><i class="fas fa-music"></i>Artist Page</a>
+                <a href="artist.html"
+                  ><i class="fas fa-music"></i>Artist Page</a
+                >
               </li>
               <li>
-                <a href="albumpage.html"><i class="fas fa-compact-disc"></i>Albums Page</a>
+                <a href="album.html"
+                  ><i class="fas fa-compact-disc"></i>Albums Page</a
+                >
               </li>
             </div>
           </ul>
@@ -335,8 +219,8 @@
                 </div>
                 <div class="row">
                   <div class="col-12">
-                    <a class="btn btn-block signUpWithFacebook">
-                      <i class="fab fa-facebook"></i>CONTINUE WITH FACEBOOK</a
+                    <a class="btn btn-block signUpWithFacebook"
+                      ><i class="fab fa-facebook"></i>CONTINUE WITH FACEBOOK</a
                     >
                   </div>
                 </div>
@@ -534,13 +418,16 @@
                   <div class="row row-submit mt-3">
                     <div
                       class="col-12 col-sm-6 d-flex flex-column justify-content-center"
-                      >
-                    <div class="control-group mb-3 mb-md-0">
-                      <label class="control control-checkbox" style="color:#b6b4b4;">
-                         Remember me
+                    >
+                      <div class="control-group mb-3 mb-md-0">
+                        <label
+                          class="control control-checkbox"
+                          style="color: #b6b4b4"
+                        >
+                          Remember me
                           <input type="checkbox" checked="checked" />
                           <div class="control_indicator"></div>
-                      </label>
+                        </label>
                       </div>
                     </div>
                     <div class="col-12 col-sm-6">
@@ -609,10 +496,14 @@
 
     <!-- Downbar Menu -->
     <div class="bottomMenuWrapper d-none d-sm-flex d-md-flex d-lg-flex">
-      <div class="bottomMenuWrapperLeft">
+      <div id="bottomLeftCorner" class="bottomMenuWrapperLeft">
         <div class="d-flex">
           <div class="position-relative imageDimensionContainer">
-            <img src="Img/Highway 61.PNG" class="bottomMenuWrapperLeftAlbumImage" alt="">
+            <img
+              src="Img/Highway 61.PNG"
+              class="bottomMenuWrapperLeftAlbumImage"
+              alt=""
+            />
           </div>
           <div class="bottomMenuWrapperLeftAlbumText">
             <h3>Song For My Father</h3>
@@ -664,17 +555,14 @@
             <li class="finalListLi">
               <div class="d-flex align-items-center">
                 <i class="fas fa-volume-up"></i>
-                  <!-- THIS INPUT THE CONTAINS VOLUME SLIDER-->
-              <input type="range" class="d-lg-block styled-slider slider-progress p-3"/>
-                <!-- <div class="progress progressVolume mb-0 ml-2">
-                  <div
-                    class="progress-bar mb-0"
-                    role="progressbar"
-                    aria-valuenow="50"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  ></div> -->
-                </div>
+                <!--THIS INPUT THE CONTAINS VOLUME SLIDER-->
+                <input
+                  id="volume"
+                  type="range"
+                  oninput="volumeChange(this.value)"
+                  class="d-lg-block styled-slider slider-progress p-3"
+                />
+                <!--  SLIDE BAR CHANGES VOLUME ONINPUT -->
               </div>
             </li>
           </ul>
@@ -733,70 +621,226 @@
 
     <!-- Content Section -->
     <div class="contentSection">
-      <div class="container-img-artist">
-        <img
-          class="img-artist"
-          src="assets/queenonline-com-live-1986 - new1.jpg"
-          alt="queen"
-        />
-
-        <p class="text-artist-listener text-muted text-center">
-          33,000,575 MONTHLY LISTENERS
-        </p>
-        <h1 class="text-artist-title text-white">Queen</h1>
-        <div class="btn-place text-center">
-          <button type="button" class="btnArtistPage btn-play">PLAY</button>
-          <button type="button" class="btnArtistPage btn-follow">FOLLOW</button>
-          <button type="button" class="btnArtistPage dots" title="More">
-            <svg
-              role="img"
-              height="32"
-              width="32"
-              viewBox="0 0 32 32"
-              class="Svg-ulyrgf-0 hJgLcF"
-            >
-              <path
-                d="M5.998 13.999A2 2 0 105.999 18 2 2 0 005.998 14zm10.001 0A2 2 0 1016 18 2 2 0 0016 14zm10.001 0A2 2 0 1026.001 18 2 2 0 0026 14z"
-              ></path>
-            </svg>
-          </button>
-        </div>
-      </div>
-      <nav class="Page-navigation">
-        <ul class="pagination justify-content-center postionUlArtistPage">
-          <li class="active page-item text-center">
-            <a class="page-link" href="#"
-              >OVERVIEW
-              <div class="link-borderBottom"></div
-            ></a>
-          </li>
-          <li class="page-item text-center">
-            <a class="page-link" href="#"
-              ><div class="link-borderBottom"></div>
-              RELATED ARTISTS</a
-            >
-          </li>
-          <li class="page-item text-center">
-            <a class="page-link" href="#"
-              ><div class="link-borderBottom"></div>
-              ABOUT</a
-            >
-          </li>
-        </ul>
-      </nav>
-
-      <div class="album pl-4">
-        <div class="container">
-          <h2 class="albums-heading mb-3">Albums</h2>
-          <div class="row" id="albums">
-           
+      <audio id="audio" src="" class="d-none" autoplay></audio>
+      <!---------------------------EMPTY AUDIO  -------------->
+      <div class="container-fluid" id="Album-Page">
+        <div class="row">
+          <div id="albumSection" class="col-sm-12 col-md-6 Album text-center">
+            <!--   HERE BEGINS THE ALBUM SECTION , IT ENDS IN LINE 490   -->
+            <!-- <div class="Album-Image mt-5 mt-sm-4 mt-md-0">
+            <img
+              class="img-fluid"
+              src="https://i.scdn.co/image/ab67616d00001e02d92f69c3b3adb389afdde64f"
+              alt="Queen II (Deluxe Edition 2011 Remaster)"
+            />
+          </div>
+          <div class="Album-Title text-white text-center mt-2">
+            Queen II (Deluxe Edition 2011 Remaster)
+          </div>
+          <div class="Artists text-center">Queen</div>
+          <div class="play-btn-place text-center">
+            <button type="button" class="btn btn-play">PLAY</button>
+          </div>
+          <div class="Album-Year-Num-Songs mt-3">
+            <span class="Album-Year">1974</span>
+            <span class="dot">•</span>
+            <span class="Album-Num-Songs">16 SONGS</span>
+          </div>
+          <div class="Icons text-white mb-4">
+            <span class="Save-to-Your-Library-Icon text-white text-center">
+              <button
+                type="button"
+                role="switch"
+                aria-checked="false"
+                aria-label="Save to Your Library"
+                class="btn"
+                title="Save to Your Library"
+              >
+                <svg
+                  role="img"
+                  height="32"
+                  width="32"
+                  viewBox="0 0 32 32"
+                  class=""
+                >
+                  <path
+                    d="M27.672 5.573a7.904 7.904 0 00-10.697-.489c-.004.003-.425.35-.975.35-.564 0-.965-.341-.979-.354a7.904 7.904 0 00-10.693.493A7.896 7.896 0 002 11.192c0 2.123.827 4.118 2.301 5.59l9.266 10.848a3.196 3.196 0 004.866 0l9.239-10.819A7.892 7.892 0 0030 11.192a7.896 7.896 0 00-2.328-5.619zm-.734 10.56l-9.266 10.848c-.837.979-2.508.979-3.346 0L5.035 16.104A6.9 6.9 0 013 11.192 6.9 6.9 0 015.035 6.28a6.935 6.935 0 014.913-2.048 6.89 6.89 0 014.419 1.605A2.58 2.58 0 0016 6.434c.914 0 1.555-.53 1.619-.585a6.908 6.908 0 019.346.431C28.277 7.593 29 9.337 29 11.192s-.723 3.6-2.062 4.941z"
+                  ></path>
+                </svg>
+              </button>
+            </span>
+            <span class="Three-Dot-Icon text-white text-center">
+              <button
+                type="button"
+                aria-haspopup="menu"
+                aria-label="More"
+                class="btn"
+                title="More"
+              >
+                <svg
+                  role="img"
+                  height="32"
+                  width="32"
+                  viewBox="0 0 32 32"
+                  class=""
+                >
+                  <path
+                    d="M5.998 13.999A2 2 0 105.999 18 2 2 0 005.998 14zm10.001 0A2 2 0 1016 18 2 2 0 0016 14zm10.001 0A2 2 0 1026.001 18 2 2 0 0026 14z"
+                  ></path>
+                </svg>
+              </button>
+            </span>
+          </div>-->
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div id="colOfSongs" class="song col-12 text-white">
+              <!-- <div class="row">                          ---------------------------------- LINE 493 TO 502 IS A  SONG (493-644 WERE THE PREVIOUS SONGS )---------------------------------->
+              <!--  <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Procession - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">1:13</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Father To Son - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">6:13</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                White Queen (As It Began) - Remastered 2011 - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">4:33</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Some Day One Day - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">4:22</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                The Loser In The End - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">4:01</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Ogre Battle - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">4:08</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                The Fairy Feller's Master-Stroke - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">2:40</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Nevermore - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">1:18</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                The March Of The Black Queen - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">6:32</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Funny How Love Is - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">2:49</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Seven Seas Of Rhye - Remastered 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">2:48</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                See What A Fool I've Been - Live BBC Session, London / July 1973
+                / 2011 Remix
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">4:22</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                White Queen (As It Began) - Live At Hammersmith Odeon, London /
+                December 1975
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">5:32</div>
+            </div>
+            <div class="row">
+              <div class="song-icon col-1">
+                <ion-icon name="musical-note-outline"></ion-icon>
+              </div>
+              <div class="song-title col-10">
+                Seven Seas Of Rhye - Instrumental Mix 2011
+                <div class="song-artists">Queen</div>
+              </div>
+              <div class="song-length col-1">3:00</div>
+            </div> -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- End Content Section -->
-
-    <!-- Content Section -->
-
     <!-- End Content Section -->
 
     <!--Local Storage-->
@@ -843,28 +887,26 @@
       signUpButton.onclick = logInUser;
       logOutButton.onclick = logOutUser;
 
-      for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
-          e.style.setProperty('--value', e.value);
-          e.style.setProperty('--min', e.min == '' ? '0' : e.min);
-          e.style.setProperty('--max', e.max == '' ? '100' : e.max);
-          e.addEventListener('input', () => e.style.setProperty('--value', e.value));
-          console.log( e.addEventListener('input', () => e.style.setProperty('--value', e.value)))
+      for (let e of document.querySelectorAll(
+        'input[type="range"].slider-progress'
+      )) {
+        e.style.setProperty("--value", e.value);
+        e.style.setProperty("--min", e.min == "" ? "0" : e.min);
+        e.style.setProperty("--max", e.max == "" ? "100" : e.max);
+        e.addEventListener("input", () =>
+          e.style.setProperty("--value", e.value)
+        );
+        console.log(
+          e.addEventListener("input", () =>
+            e.style.setProperty("--value", e.value)
+          )
+        );
       }
     </script>
+    <!-- Kosta's script link -->
+    <script src="album.js"></script>
     <!--End Local Storage-->
 
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script>
-      window.jQuery ||
-        document.write(
-          '<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>'
-        );
-    </script>
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
     <!--Bootstrap-->
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -882,6 +924,25 @@
       src="https://kit.fontawesome.com/cf8ccbb757.js"
       crossorigin="anonymous"
     ></script>
-    <script src="artist.js"></script>
+
+    <!--Bootstrap-->
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--Fontawesome-->
+    <script
+      src="https://kit.fontawesome.com/cf8ccbb757.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--ionicons-->
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   </body>
 </html>
